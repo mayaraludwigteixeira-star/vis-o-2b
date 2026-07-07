@@ -1,1 +1,122 @@
+/* firebase.css */
 
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #1a1a1a; 
+    margin: 0; 
+    padding: 0;
+    color: white; 
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box;
+}
+
+/* Container principal ajustado para responder bem em qualquer orientação do celular */
+.gamepad-container {
+    display: flex;
+    flex-direction: row; /* Força ficar lado a lado */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px; 
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
+.left-side, .right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0; /* Impede o celular de esmagar os botões */
+}
+
+.center-side {
+    flex: 1;
+    text-align: center;
+    padding: 0 10px;
+}
+
+/* Layout de grade em cruz idêntico para ambos */
+.dpad-buttons, .xbox-buttons { 
+    display: grid; 
+    grid-template-columns: repeat(3, 65px);
+    grid-template-rows: repeat(3, 65px);
+    gap: 12px; 
+    width: 219px;
+    height: 219px;
+    box-sizing: border-box;
+}
+
+.dpad-buttons {
+    grid-template-areas: 
+        ". up ." 
+        "left . right" 
+        ". down ."; 
+}
+
+.xbox-buttons { 
+    grid-template-areas: 
+        ". y ." 
+        "x . o" 
+        ". a ."; 
+}
+
+/* Estilo universal dos botões redondos */
+.dpad-buttons button, .xbox-buttons button { 
+    width: 65px; 
+    height: 65px; 
+    border-radius: 50%; 
+    font-size: 1.6rem; 
+    font-weight: bold; 
+    color: white; 
+    cursor: pointer; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); 
+    box-shadow: inset 0 -4px 0 rgba(0,0,0,0.3), 0 4px 10px rgba(0,0,0,0.6); 
+    transform: translateY(0); 
+    transition: all 0.05s ease-in-out; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 0; 
+    box-sizing: border-box;
+    border: 3px solid rgba(255,255,255,0.15);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.dpad-buttons button:active, .xbox-buttons button:active { 
+    transform: translateY(3px); 
+    box-shadow: inset 0 2px 0 rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.4); 
+}
+
+/* Cor das Setas */
+.dpad-btn { background-color: #333333 !important; } 
+.dpad-up { grid-area: up; }
+.dpad-left { grid-area: left; }
+.dpad-right { grid-area: right; }
+.dpad-down { grid-area: down; }
+
+/* Cores do Xbox */
+.xbox-btn-y { grid-area: y; background-color: #e6b800 !important; } 
+.xbox-btn-o { grid-area: o; background-color: #cc002c !important; } 
+.xbox-btn-x { grid-area: x; background-color: #0077e6 !important; } 
+.xbox-btn-a { grid-area: a; background-color: #00cc1b !important; } 
+
+#mensagem {
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0;
+    word-break: break-all;
+}
+
+/* Correção para celulares muito pequenos ou em pé: diminui levemente o espaço central */
+@media (max-width: 600px) {
+    .gamepad-container {
+        padding: 5px 10px;
+    }
+}
